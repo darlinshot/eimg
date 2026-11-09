@@ -17,10 +17,15 @@ pub enum Commands {
     Info {
         input: PathBuf,
     },
+    Similarity {
+        input1: PathBuf,
+        input2: PathBuf,
+        hash_size: u32,
+    }
 }
 
 pub fn run(command: Commands) -> Result<(), Box<dyn Error>> {
-    let _ = commands::command_run(command);
+    let _ = commands::run_command(command);
 
     Ok(())
 }
