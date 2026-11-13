@@ -21,6 +21,11 @@ pub enum Commands {
         input1: PathBuf,
         input2: PathBuf,
         hash_size: u32,
+    },
+    BulkSimilarity {
+        path: PathBuf,
+        hash_size: u32,
+        min_score: u32
     }
 }
 
