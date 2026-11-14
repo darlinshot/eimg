@@ -1,6 +1,5 @@
 use std::error::Error;
 
-use std::collections::HashMap;
 use std::path::PathBuf;
 use std::fs;
 
@@ -41,7 +40,13 @@ pub fn run(path: PathBuf, hash_size: u32, min_score: u32) -> Result<(), Box<dyn 
             continue;
         }
 
-        let img = image::open(&file_path)?;
+        let img: image::DynamicImage = match image::open(&file_path) {
+            Ok(img) => img,
+            Err(err) => {
+                eprintln!("Could not open {:?}: {}", file_path, err);
+                continue;
+            }
+        };
         println!("{:?}", file_path);
         
         let hash = hasher.hash_image(&img);
