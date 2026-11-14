@@ -8,6 +8,6 @@ mod commands;
 fn main() -> Result<(), Box<dyn Error>> {
     let eimg = eimg::Eimg::parse();
 
-    let _ = eimg::run(eimg.command);
+    eimg::run(eimg.command)?;
     Ok(())
 }

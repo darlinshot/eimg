@@ -30,7 +30,7 @@ pub enum Commands {
 }
 
 pub fn run(command: Commands) -> Result<(), Box<dyn Error>> {
-    let _ = commands::run_command(command);
+    commands::run_command(command)?;
 
     Ok(())
 }
